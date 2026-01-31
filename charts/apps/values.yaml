@@ -152,7 +152,7 @@ applications:
     finalizers:
       - resources-finalizer.argocd.argoproj.io
     source:
-      repoURL: https://github.com/whythatfunction/ai-secrets
+      repoURL: https://github.com/whythatfunction/home-ai-secrets
       targetRevision: HEAD
       path: charts/manifests/converse-auth
       helm:
@@ -170,7 +170,7 @@ applications:
     finalizers:
       - resources-finalizer.argocd.argoproj.io
     source:
-      repoURL: https://github.com/whythatfunction/ai-secrets
+      repoURL: https://github.com/whythatfunction/home-ai-secrets
       targetRevision: HEAD
       path: charts/manifests/converse-mcp
       helm:
