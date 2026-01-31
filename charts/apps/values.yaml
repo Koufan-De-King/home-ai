@@ -170,7 +170,7 @@ applications:
     finalizers:
       - resources-finalizer.argocd.argoproj.io
     source:
-      repoURL: https://github.com/whythatfunction/home-ai-secrets
+      repoURL: https://github.com/whythatfunction/home-ai
       targetRevision: HEAD
       path: manifests/converse-mcp
       helm:
