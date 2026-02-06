@@ -121,7 +121,7 @@ applications:
     project: ai
     source:
       repoURL: oci://docker.io/envoyproxy/ai-gateway-crds-helm
-      targetRevision: v0.0.0-latest
+      targetRevision: v0.5.0
       path: .
       helm:
         releaseName: aieg-crd
@@ -140,7 +140,7 @@ applications:
     project: ai
     source:
       repoURL: oci://docker.io/envoyproxy/ai-gateway-helm
-      targetRevision: v0.0.0-latest
+      targetRevision: v0.5.0
       path: .
       helm:
         releaseName: aieg
@@ -234,7 +234,7 @@ applications:
       - resources-finalizer.argocd.argoproj.io
     source:
       repoURL: https://github.com/ADORSYS-GIS/ai-helm
-      targetRevision: feat/model-chart
+      targetRevision: HEAD
       path: charts/ai-gateway-core
       helm:
         releaseName: converse-core
@@ -262,7 +262,7 @@ applications:
       - resources-finalizer.argocd.argoproj.io
     source:
       repoURL: https://github.com/ADORSYS-GIS/ai-helm
-      targetRevision: feat/model-chart
+      targetRevision: HEAD
       path: charts/models
       helm:
         releaseName: converse-models
