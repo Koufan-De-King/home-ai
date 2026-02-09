@@ -174,7 +174,7 @@ applications:
         releaseName: phoenix
         valuesObject:
           ingress:
-            host: "converse-analytics.camer.digital"
+            host: "analytics.ai.camer.digital"
             annotations:
               cert-manager.io/cluster-issuer: cert-home-cert-http
           additionalEnv:
