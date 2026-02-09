@@ -162,6 +162,51 @@ applications:
         prune: true
         selfHeal: true
 
+  - name: phoenix
+    finalizers:
+      - resources-finalizer.argocd.argoproj.io
+    project: ai
+    source:
+      repoURL: oci://registry-1.docker.io/arizephoenix/phoenix-helm
+      targetRevision: 4.0.36
+      path: .
+      helm:
+        releaseName: phoenix
+        valuesObject:
+          ingress:
+            host: "converse-analytics.ssegning.com"
+            annotations:
+              cert-manager.io/cluster-issuer: cert-home-cert-http
+          auth:
+            disableBasicAuth: true
+            oauth2:
+              enabled: true
+              providers:
+                keycloak:
+                  client_id: "phoenix"
+                  #client_secret: "your-keycloak-client-secret"
+                  oidc_config_url: "https://accounts.ssegning.com/realms/camer-digital/.well-known/openid-configuration"
+                  display_name: "CDigital"
+                  allow_sign_up: true
+                  auto_login: true
+                  # Advanced: Extract roles from nested Keycloak structure
+                  #groups_attribute_path: "resource_access.phoenix.roles"
+                  #allowed_groups: [ "admin", "developer", "viewer" ]
+                  # Advanced: Role mapping - map IDP roles to Phoenix roles (ADMIN, MEMBER, VIEWER)
+                  #role_attribute_path: "resource_access.phoenix.role"  # JMESPath to extract role
+                  #role_mapping: "admin:ADMIN,user:MEMBER"  # Map IDP roles to Phoenix roles
+                  role_attribute_strict: false  # If true, deny access when role cannot be determined
+                  use_pkce: true
+
+    destination:
+      namespace: envoy-ai-gateway-system
+    syncPolicy:
+      syncOptions:
+        - ServerSideApply=true
+      automated:
+        prune: true
+        selfHeal: true
+
   - name: authorino-operator
     finalizers:
       - resources-finalizer.argocd.argoproj.io
