@@ -197,9 +197,6 @@ applications:
               - key: "PHOENIX_POSTGRES_PASSWORD"
                 value: "postgres"
 
-              - key: "PHOENIX_SMTP_PASSWORD"
-                value: ""
-
               - key: "PHOENIX_DEFAULT_ADMIN_INITIAL_PASSWORD"
                 valueFrom:
                   secretKeyRef:
